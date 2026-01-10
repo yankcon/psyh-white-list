@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Добавить в Happ</title>
+  <style>
+    :root{
+      --bg1:#f6f7fb;
+      --bg2:#eef1f7;
+      --card:#ffffff;
+      --text:#0b0f1a;
+      --muted:rgba(11,15,26,.55);
+      --border:rgba(11,15,26,.10);
+      --btn:#0b0f1a;
+      --btnText:#ffffff;
+      --shadow: 0 18px 50px rgba(11,15,26,.10);
+      --radius: 22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 20% -10%, rgba(0,0,0,.06), transparent 60%),
+        radial-gradient(700px 520px at 110% 10%, rgba(0,0,0,.05), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:18px;
+    }
+    .wrap{ width:min(520px, 100%); }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:22px;
+    }
+    .title{
+      font-size:20px;
+      font-weight:700;
+      margin:0 0 8px 0;
+      letter-spacing:-0.2px;
+    }
+    .desc{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.45;
+    }
+    .btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      border-radius:16px;
+      padding:14px 16px;
+      font-weight:700;
+      font-size:15px;
+      background:var(--btn);
+      color:var(--btnText);
+      text-decoration:none;
+      user-select:none;
+    }
+    .btn:active{transform:translateY(1px)}
+    .hint{
+      margin:14px 0 0 0;
+      font-size:12px;
+      color:var(--muted);
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1 class="title">Добавить подписку</h1>
+      <p class="desc">Откроется Happ и предложит добавить конфигурацию.</p>
+
+      <a id="open" class="btn"
+         href="happ://add/https://raw.githubusercontent.com/yankcon/psyh-white-list/refs/heads/main/sub.txt">
+        ➕ Добавить в Happ
+      </a>
+
+      <p class="hint">Если Happ не открылся автоматически — нажми кнопку ещё раз.</p>
+    </div>
+  </div>
+
+  <script>
+    const deeplink = document.getElementById("open").href;
+    setTimeout(() => { window.location.href = deeplink; }, 120);
+    setTimeout(() => { window.location.replace(deeplink); }, 520);
+  </script>
+</body>
+</html>
